@@ -1,34 +1,37 @@
+"use client";
 
-'use client';
-
-import Link from 'next/link';
-import { useState } from 'react';
+import Link from "next/link";
+import React, { useState } from "react";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    email: '',
-    phone: '',
-    type: '',
-    content: ''
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    type: "",
+    content: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formData.content.length > 500) {
-      alert('お問い合わせ内容は500文字以内で入力してください。');
+      alert("お問い合わせ内容は500文字以内で入力してください。");
       return;
     }
-    console.log('Form submitted:', formData);
-    alert('お問い合わせを送信いたしました。ありがとうございます。');
+    console.log("Form submitted:", formData);
+    alert("お問い合わせを送信いたしました。ありがとうございます。");
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -45,29 +48,81 @@ export default function Home() {
             </div>
 
             <nav className="hidden md:flex items-center space-x-8">
-              <Link href="#home" className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer whitespace-nowrap font-medium">HOME</Link>
-              <Link href="#services" className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer whitespace-nowrap font-medium">サービス</Link>
-              <Link href="#partners" className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer whitespace-nowrap font-medium">パートナー募集</Link>
-              <Link href="#company" className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer whitespace-nowrap font-medium">会社概要</Link>
-              <Link href="#contact" className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer whitespace-nowrap font-medium">お問い合わせ</Link>
+              <Link
+                href="#home"
+                className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer whitespace-nowrap font-medium"
+              >
+                HOME
+              </Link>
+              <Link
+                href="#services"
+                className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer whitespace-nowrap font-medium"
+              >
+                サービス
+              </Link>
+              <Link
+                href="#partners"
+                className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer whitespace-nowrap font-medium"
+              >
+                パートナー募集
+              </Link>
+              <Link
+                href="#company"
+                className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer whitespace-nowrap font-medium"
+              >
+                会社概要
+              </Link>
+              <Link
+                href="#contact"
+                className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer whitespace-nowrap font-medium"
+              >
+                お問い合わせ
+              </Link>
             </nav>
 
             <button
               className="md:hidden w-6 h-6 flex items-center justify-center cursor-pointer"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <i className={`ri-${isMenuOpen ? 'close' : 'menu'}-line text-xl`}></i>
+              <i
+                className={`ri-${isMenuOpen ? "close" : "menu"}-line text-xl`}
+              ></i>
             </button>
           </div>
 
           {isMenuOpen && (
             <div className="md:hidden py-4 border-t border-blue-200">
               <nav className="flex flex-col space-y-3">
-                <Link href="#home" className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer font-medium">HOME</Link>
-                <Link href="#services" className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer font-medium">サービス</Link>
-                <Link href="#partners" className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer font-medium">パートナー募集</Link>
-                <Link href="#company" className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer font-medium">会社概要</Link>
-                <Link href="#contact" className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer font-medium">お問い合わせ</Link>
+                <Link
+                  href="#home"
+                  className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer font-medium"
+                >
+                  HOME
+                </Link>
+                <Link
+                  href="#services"
+                  className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer font-medium"
+                >
+                  サービス
+                </Link>
+                <Link
+                  href="#partners"
+                  className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer font-medium"
+                >
+                  パートナー募集
+                </Link>
+                <Link
+                  href="#company"
+                  className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer font-medium"
+                >
+                  会社概要
+                </Link>
+                <Link
+                  href="#contact"
+                  className="text-gray-700 hover:text-blue-800 transition-colors cursor-pointer font-medium"
+                >
+                  お問い合わせ
+                </Link>
               </nav>
             </div>
           )}
@@ -75,7 +130,10 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="relative h-screen bg-gradient-to-br from-blue-900 to-blue-800 overflow-hidden">
+      <section
+        id="home"
+        className="relative h-screen bg-gradient-to-br from-blue-900 to-blue-800 overflow-hidden"
+      >
         <div className="absolute inset-0">
           <video
             src="https://public.readdy.ai/ai/video_res/3c4b4bd3-1957-411b-8e3c-97e4695313b4.mp4"
@@ -100,10 +158,16 @@ export default function Home() {
               信頼性と親しみやすさを兼ね備えた、真のプロフェッショナルパートナーとして皆様のビジネスを支援いたします。
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="#services" className="inline-block bg-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-cyan-400 transition-colors cursor-pointer whitespace-nowrap shadow-lg">
+              <Link
+                href="#services"
+                className="inline-block bg-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-cyan-400 transition-colors cursor-pointer whitespace-nowrap shadow-lg"
+              >
                 サービスを見る
               </Link>
-              <Link href="#contact" className="inline-block bg-transparent border-2 border-cyan-400 text-cyan-400 px-8 py-4 rounded-full text-lg font-medium hover:bg-cyan-400 hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+              <Link
+                href="#contact"
+                className="inline-block bg-transparent border-2 border-cyan-400 text-cyan-400 px-8 py-4 rounded-full text-lg font-medium hover:bg-cyan-400 hover:text-white transition-colors cursor-pointer whitespace-nowrap"
+              >
                 お問い合わせ
               </Link>
             </div>
@@ -137,7 +201,9 @@ export default function Home() {
                     <div className="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center mx-auto mb-4">
                       <i className="ri-close-line text-2xl text-white"></i>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-600 mb-4">従来のIT（技術中心）</h3>
+                    <h3 className="text-xl font-bold text-gray-600 mb-4">
+                      従来のIT（技術中心）
+                    </h3>
                   </div>
                   <div className="flex justify-center space-x-6 mb-6">
                     <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
@@ -151,8 +217,10 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-gray-500 text-sm leading-relaxed">
-                    技術ありきのアプローチ<br />
-                    システム導入が目的化<br />
+                    技術ありきのアプローチ
+                    <br />
+                    システム導入が目的化
+                    <br />
                     現場の実情を軽視
                   </p>
                 </div>
@@ -165,7 +233,9 @@ export default function Home() {
                     <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
                       <i className="ri-check-line text-2xl text-white"></i>
                     </div>
-                    <h3 className="text-xl font-bold text-orange-600 mb-4">当社のアプローチ（業務中心）</h3>
+                    <h3 className="text-xl font-bold text-orange-600 mb-4">
+                      当社のアプローチ（業務中心）
+                    </h3>
                   </div>
                   <div className="flex justify-center space-x-6 mb-6">
                     <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
@@ -179,8 +249,10 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-orange-600 text-sm leading-relaxed font-medium">
-                    现場の業務を深く理解<br />
-                    実務レベルでの支援<br />
+                    现場の業務を深く理解
+                    <br />
+                    実務レベルでの支援
+                    <br />
                     継続的な改善提案
                   </p>
                 </div>
@@ -190,10 +262,23 @@ export default function Home() {
             {/* メインメッセージ */}
             <div className="text-center max-w-4xl mx-auto">
               <p className="text-2xl md:text-3xl leading-relaxed text-gray-800 mb-8">
-                私たちは、ITの<span className="text-orange-500 font-semibold relative">"技術"</span>そのものではなく、<br className="hidden md:block" />
-                <span className="text-orange-500 font-semibold relative">"業務"</span>に焦点をあてたITコンサルティングサービスを提供しています。<br className="hidden md:block" />
-                お客様の現場に深く入り込み、実務レベルで支援する<br className="hidden md:block" />
-                <span className="text-orange-500 font-semibold relative">「ハンズオン型」</span>のスタイルが特徴です。
+                私たちは、ITの
+                <span className="text-orange-500 font-semibold relative">
+                  "技術"
+                </span>
+                そのものではなく、
+                <br className="hidden md:block" />
+                <span className="text-orange-500 font-semibold relative">
+                  "業務"
+                </span>
+                に焦点をあてたITコンサルティングサービスを提供しています。
+                <br className="hidden md:block" />
+                お客様の現場に深く入り込み、実務レベルで支援する
+                <br className="hidden md:block" />
+                <span className="text-orange-500 font-semibold relative">
+                  「ハンズオン型」
+                </span>
+                のスタイルが特徴です。
               </p>
 
               <div className="flex justify-center space-x-8 mb-8">
@@ -228,9 +313,13 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-blue-900 mb-4">私たちの強み</h2>
+              <h2 className="text-4xl font-bold text-blue-900 mb-4">
+                私たちの強み
+              </h2>
               <div className="w-16 h-1 bg-cyan-500 mx-auto mb-6"></div>
-              <p className="text-lg text-gray-700 font-medium">お客様のビジネスを支える3つの価値</p>
+              <p className="text-lg text-gray-700 font-medium">
+                お客様のビジネスを支える3つの価値
+              </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -238,7 +327,9 @@ export default function Home() {
                 <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                   <i className="ri-focus-3-line text-3xl text-white"></i>
                 </div>
-                <h3 className="text-xl font-bold text-blue-900 mb-4">ハンズオン型支援</h3>
+                <h3 className="text-xl font-bold text-blue-900 mb-4">
+                  ハンズオン型支援
+                </h3>
                 <p className="text-gray-600 leading-relaxed">
                   私たちはITの"技術"ではなく"業務"に焦点をあて、現場に深く入り込む「ハンズオン型」の支援を提供しています。
                 </p>
@@ -248,7 +339,9 @@ export default function Home() {
                 <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                   <i className="ri-team-line text-3xl text-white"></i>
                 </div>
-                <h3 className="text-xl font-bold text-blue-900 mb-4">協業による価値創造</h3>
+                <h3 className="text-xl font-bold text-blue-900 mb-4">
+                  協業による価値創造
+                </h3>
                 <p className="text-gray-600 leading-relaxed">
                   当社のサービスは単独で成り立ちません。現場を支える人や協力企業とともに価値ある支援を実現します。
                 </p>
@@ -258,7 +351,9 @@ export default function Home() {
                 <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                   <i className="ri-rocket-line text-3xl text-white"></i>
                 </div>
-                <h3 className="text-xl font-bold text-blue-900 mb-4">成長支援パートナー</h3>
+                <h3 className="text-xl font-bold text-blue-900 mb-4">
+                  成長支援パートナー
+                </h3>
                 <p className="text-gray-600 leading-relaxed">
                   成長の形が変わっても、真のパートナーであり続けたい。独立・開業を目指す方や法人化を目指す方の支援も行い、前向きなキャリアを応援しています。
                 </p>
@@ -269,7 +364,10 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-gradient-to-br from-blue-900 to-blue-800 relative overflow-hidden">
+      <section
+        id="services"
+        className="py-20 bg-gradient-to-br from-blue-900 to-blue-800 relative overflow-hidden"
+      >
         <div className="absolute inset-0 opacity-20">
           <img
             src="https://readdy.ai/api/search-image?query=IT%20consulting%20team%20working%20with%20multiple%20monitors%20displaying%20data%20analytics%20and%20system%20architecture%20diagrams%2C%20modern%20technology%20workspace%20with%20deep%20blue%20ambient%20lighting%2C%20professional%20consultants%20analyzing%20business%20processes%20and%20digital%20transformation%20strategies%2C%20sleek%20office%20environment%20with%20glass%20surfaces%20and%20contemporary%20design%2C%20focus%20on%20innovation%20and%20technical%20expertise%2C%20dynamic%20composition%20suggesting%20speed%20and%20efficiency&width=1920&height=1000&seq=it-consulting-services&orientation=landscape"
@@ -280,7 +378,9 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white mb-4">サービス紹介</h2>
+              <h2 className="text-4xl font-bold text-white mb-4">
+                サービス紹介
+              </h2>
               <div className="w-16 h-1 bg-cyan-400 mx-auto"></div>
             </div>
 
@@ -296,7 +396,9 @@ export default function Home() {
                 <div className="w-20 h-20 bg-blue-800 rounded-full flex items-center justify-center mx-auto mb-6">
                   <i className="ri-lightbulb-line text-3xl text-white"></i>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">IT事業推進支援</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">
+                  IT事業推進支援
+                </h3>
                 <p className="text-gray-600 leading-relaxed text-center">
                   新規事業や社内改革を企画段階から支援。目的明確化、施策立案、実行計画策定まで伴走します。
                 </p>
@@ -313,7 +415,9 @@ export default function Home() {
                 <div className="w-20 h-20 bg-blue-800 rounded-full flex items-center justify-center mx-auto mb-6">
                   <i className="ri-settings-3-line text-3xl text-white"></i>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">IT部門業務支援</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">
+                  IT部門業務支援
+                </h3>
                 <p className="text-gray-600 leading-relaxed text-center">
                   スキル不足や業務遂行力向上のため、業務整理・プロセス改善・進め方指導を通じ部門全体を強化。
                 </p>
@@ -330,7 +434,9 @@ export default function Home() {
                 <div className="w-20 h-20 bg-blue-800 rounded-full flex items-center justify-center mx-auto mb-6">
                   <i className="ri-clipboard-line text-3xl text-white"></i>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">システム開発プロジェクト支援</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">
+                  システム開発プロジェクト支援
+                </h3>
                 <p className="text-gray-600 leading-relaxed text-center">
                   PMOとして参画し、課題解決や進捗管理、プロジェクト運営の指導を行います。
                 </p>
@@ -341,16 +447,20 @@ export default function Home() {
       </section>
 
       {/* Partners Section */}
-      <section id="partners" className="py-20 bg-white relative overflow-hidden min-h-screen">
+      <section
+        id="partners"
+        className="py-20 bg-white relative overflow-hidden min-h-screen"
+      >
         {/* パララックス背景 */}
         <div className="absolute inset-0 z-0">
           <div
             className="w-full h-full opacity-40"
             style={{
-              backgroundImage: 'url("https://readdy.ai/api/search-image?query=Professional%20business%20partnership%20meeting%20with%20diverse%20team%20of%20entrepreneurs%20and%20executives%20shaking%20hands%20and%20collaborating%2C%20modern%20corporate%20environment%20with%20deep%20blue%20lighting%20accents%2C%20focus%20on%20teamwork%20and%20business%20relationships%2C%20contemporary%20office%20setting%20with%20glass%20conference%20rooms%20and%20sleek%20furniture%2C%20atmosphere%20of%20trust%20and%20professional%20cooperation%2C%20dynamic%20composition%20suggesting%20growth%20and%20success%2C%20clean%20minimalist%20design%20with%20emphasis%20on%20partnership%20and%20collaboration&width=1920&height=1000&seq=business-partnership-bg&orientation=landscape")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundAttachment: 'fixed'
+              backgroundImage:
+                'url("https://readdy.ai/api/search-image?query=Professional%20business%20partnership%20meeting%20with%20diverse%20team%20of%20entrepreneurs%20and%20executives%20shaking%20hands%20and%20collaborating%2C%20modern%20corporate%20environment%20with%20deep%20blue%20lighting%20accents%2C%20focus%20on%20teamwork%20and%20business%20relationships%2C%20contemporary%20office%20setting%20with%20glass%20conference%20rooms%20and%20sleek%20furniture%2C%20atmosphere%20of%20trust%20and%20professional%20cooperation%2C%20dynamic%20composition%20suggesting%20growth%20and%20success%2C%20clean%20minimalist%20design%20with%20emphasis%20on%20partnership%20and%20collaboration&width=1920&height=1000&seq=business-partnership-bg&orientation=landscape")',
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundAttachment: "fixed",
             }}
           />
           <div className="absolute inset-0 bg-white/60"></div>
@@ -359,9 +469,13 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-blue-900 mb-6">パートナー募集</h2>
+              <h2 className="text-4xl font-bold text-blue-900 mb-6">
+                パートナー募集
+              </h2>
               <div className="w-16 h-1 bg-cyan-500 mx-auto mb-8"></div>
-              <p className="text-lg text-gray-700 mb-6 font-medium">私たちは次の3つの形でパートナーを募集しています。</p>
+              <p className="text-lg text-gray-700 mb-6 font-medium">
+                私たちは次の3つの形でパートナーを募集しています。
+              </p>
 
               <div className="max-w-4xl mx-auto">
                 {/* 強調メッセージ */}
@@ -375,25 +489,35 @@ export default function Home() {
                       <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl">
                         <i className="ri-user-heart-line text-2xl text-white"></i>
                       </div>
-                      <p className="text-lg font-semibold text-gray-800">現場で支える人</p>
+                      <p className="text-lg font-semibold text-gray-800">
+                        現場で支える人
+                      </p>
                     </div>
                     <div className="text-center transform transition-all duration-300 hover:scale-110">
                       <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl">
                         <i className="ri-lightbulb-line text-2xl text-white"></i>
                       </div>
-                      <p className="text-lg font-semibold text-gray-800">一緒に考える人</p>
+                      <p className="text-lg font-semibold text-gray-800">
+                        一緒に考える人
+                      </p>
                     </div>
                     <div className="text-center transform transition-all duration-300 hover:scale-110">
                       <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-800 rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl">
                         <i className="ri-building-2-line text-2xl text-white"></i>
                       </div>
-                      <p className="text-lg font-semibold text-gray-800">専門性を補完しあう企業</p>
+                      <p className="text-lg font-semibold text-gray-800">
+                        専門性を補完しあう企業
+                      </p>
                     </div>
                   </div>
 
                   <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:shadow-xl">
                     <p className="text-xl text-white font-medium leading-relaxed">
-                      そんな多様な<span className="text-yellow-300 font-bold bg-white/20 px-2 py-1 rounded">"仲間"</span>とともに、価値ある支援を実現したいと考えています。
+                      そんな多様な
+                      <span className="text-yellow-300 font-bold bg-white/20 px-2 py-1 rounded">
+                        "仲間"
+                      </span>
+                      とともに、価値ある支援を実現したいと考えています。
                     </p>
                   </div>
                 </div>
@@ -407,7 +531,9 @@ export default function Home() {
                   <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mr-6 shadow-xl">
                     <i className="ri-user-star-line text-2xl text-white"></i>
                   </div>
-                  <h3 className="text-3xl font-bold text-blue-900">従業員パートナー（正社員／パートタイマー）</h3>
+                  <h3 className="text-3xl font-bold text-blue-900">
+                    従業員パートナー（正社員／パートタイマー）
+                  </h3>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8">
@@ -419,13 +545,16 @@ export default function Home() {
                         alt="正社員採用"
                         className="w-24 h-24 rounded-full object-cover object-top mr-4 shadow-lg"
                       />
-                      <h4 className="text-2xl font-bold text-blue-900">正社員採用</h4>
+                      <h4 className="text-2xl font-bold text-blue-900">
+                        正社員採用
+                      </h4>
                     </div>
 
                     <div className="space-y-4">
                       <div className="bg-blue-50 p-4 rounded-lg">
                         <h5 className="font-bold text-blue-800 mb-2 flex items-center">
-                          <i className="ri-briefcase-line mr-2"></i>職種・業務内容
+                          <i className="ri-briefcase-line mr-2"></i>
+                          職種・業務内容
                         </h5>
                         <p className="text-gray-700 text-sm leading-relaxed">
                           主に当社が受注した案件において、クライアントの課題解決に直接携わっていただきます。
@@ -462,13 +591,16 @@ export default function Home() {
                         alt="パートタイマー採用"
                         className="w-24 h-24 rounded-full object-cover object-top mr-4 shadow-lg"
                       />
-                      <h4 className="text-2xl font-bold text-cyan-900">パートタイマー採用</h4>
+                      <h4 className="text-2xl font-bold text-cyan-900">
+                        パートタイマー採用
+                      </h4>
                     </div>
 
                     <div className="space-y-4">
                       <div className="bg-cyan-50 p-4 rounded-lg">
                         <h5 className="font-bold text-cyan-800 mb-2 flex items-center">
-                          <i className="ri-briefcase-line mr-2"></i>職種・業務内容
+                          <i className="ri-briefcase-line mr-2"></i>
+                          職種・業務内容
                         </h5>
                         <p className="text-gray-700 text-sm leading-relaxed">
                           社内から当社業務を支えていただくポジションです。
@@ -481,7 +613,9 @@ export default function Home() {
                         </h5>
                         <ul className="text-gray-700 text-sm space-y-1">
                           <li>• 社内事務（会計・請求・受発注など）</li>
-                          <li>• リモート営業（IT案件と技術者のマッチング業務）</li>
+                          <li>
+                            • リモート営業（IT案件と技術者のマッチング業務）
+                          </li>
                         </ul>
                       </div>
 
@@ -505,7 +639,9 @@ export default function Home() {
                   <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-800 rounded-full flex items-center justify-center mr-6 shadow-xl">
                     <i className="ri-handshake-line text-2xl text-white"></i>
                   </div>
-                  <h3 className="text-3xl font-bold text-purple-900">業務委託パートナー（個人事業主／法人）</h3>
+                  <h3 className="text-3xl font-bold text-purple-900">
+                    業務委託パートナー（個人事業主／法人）
+                  </h3>
                 </div>
 
                 <div className="flex items-center mb-6">
@@ -514,7 +650,9 @@ export default function Home() {
                     alt="業務委託パートナー"
                     className="w-24 h-24 rounded-full object-cover object-top mr-4 shadow-lg"
                   />
-                  <h4 className="text-2xl font-bold text-purple-900">業務委託パートナー</h4>
+                  <h4 className="text-2xl font-bold text-purple-900">
+                    業務委託パートナー
+                  </h4>
                 </div>
 
                 <div className="space-y-6">
@@ -540,7 +678,8 @@ export default function Home() {
 
                   <div className="bg-purple-50 p-4 rounded-lg">
                     <h5 className="font-bold text-purple-800 mb-2 flex items-center">
-                      <i className="ri-star-line mr-2"></i>パートナーシップの特徴
+                      <i className="ri-star-line mr-2"></i>
+                      パートナーシップの特徴
                     </h5>
                     <p className="text-gray-700 text-sm leading-relaxed">
                       当社が請け負う業務の一部を、専門性のある外部パートナーにお任せします。信頼関係を築ける方を歓迎します。
@@ -555,7 +694,9 @@ export default function Home() {
                   <div className="w-20 h-20 bg-gradient-to-br from-orange-600 to-orange-800 rounded-full flex items-center justify-center mr-6 shadow-xl">
                     <i className="ri-building-2-line text-2xl text-white"></i>
                   </div>
-                  <h3 className="text-3xl font-bold text-orange-900">業務提携パートナー企業</h3>
+                  <h3 className="text-3xl font-bold text-orange-900">
+                    業務提携パートナー企業
+                  </h3>
                 </div>
 
                 <div className="flex items-center mb-6">
@@ -564,7 +705,9 @@ export default function Home() {
                     alt="業務提携パートナー企業"
                     className="w-24 h-24 rounded-full object-cover object-top mr-4 shadow-lg"
                   />
-                  <h4 className="text-2xl font-bold text-orange-900">業務提携パートナー企業</h4>
+                  <h4 className="text-2xl font-bold text-orange-900">
+                    業務提携パートナー企業
+                  </h4>
                 </div>
 
                 <div className="space-y-6">
@@ -582,8 +725,13 @@ export default function Home() {
                       <i className="ri-lightbulb-line mr-2"></i>協業例
                     </h5>
                     <ul className="text-gray-700 text-sm space-y-1">
-                      <li>• 技術者リソースを持つ企業様と、当社の業務支援ノウハウを組み合わせた共同提案</li>
-                      <li>• システム開発会社様との連携によるトータルIT支援の提供</li>
+                      <li>
+                        •
+                        技術者リソースを持つ企業様と、当社の業務支援ノウハウを組み合わせた共同提案
+                      </li>
+                      <li>
+                        • システム開発会社様との連携によるトータルIT支援の提供
+                      </li>
                     </ul>
                   </div>
 
@@ -604,7 +752,9 @@ export default function Home() {
                   <div className="w-20 h-20 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mr-6 shadow-xl">
                     <i className="ri-rocket-line text-2xl text-white"></i>
                   </div>
-                  <h3 className="text-3xl font-bold text-green-900">独立支援について</h3>
+                  <h3 className="text-3xl font-bold text-green-900">
+                    独立支援について
+                  </h3>
                 </div>
 
                 <div className="flex items-center mb-6">
@@ -613,7 +763,9 @@ export default function Home() {
                     alt="独立支援"
                     className="w-24 h-24 rounded-full object-cover object-top mr-4 shadow-lg"
                   />
-                  <h4 className="text-2xl font-bold text-green-900">成長のかたちが変わっても、ずっとパートナーでありたい</h4>
+                  <h4 className="text-2xl font-bold text-green-900">
+                    成長のかたちが変わっても、ずっとパートナーでありたい
+                  </h4>
                 </div>
 
                 <div className="space-y-6">
@@ -644,8 +796,13 @@ export default function Home() {
 
             {/* お問い合わせ案内 */}
             <div className="text-center mt-16 bg-white/95 backdrop-blur-lg rounded-2xl p-8 shadow-2xl">
-              <p className="text-lg text-gray-700 mb-6 font-medium">ご興味のある方はまずご連絡ください。柔軟に対応いたします。</p>
-              <Link href="#contact" className="inline-block bg-blue-800 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-blue-900 transition-colors cursor-pointer whitespace-nowrap shadow-lg transform hover:scale-105">
+              <p className="text-lg text-gray-700 mb-6 font-medium">
+                ご興味のある方はまずご連絡ください。柔軟に対応いたします。
+              </p>
+              <Link
+                href="#contact"
+                className="inline-block bg-blue-800 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-blue-900 transition-colors cursor-pointer whitespace-nowrap shadow-lg transform hover:scale-105"
+              >
                 お問い合わせする
               </Link>
             </div>
@@ -654,7 +811,10 @@ export default function Home() {
       </section>
 
       {/* Company Section */}
-      <section id="company" className="py-20 bg-gradient-to-br from-gray-100 to-blue-50 relative overflow-hidden">
+      <section
+        id="company"
+        className="py-20 bg-gradient-to-br from-gray-100 to-blue-50 relative overflow-hidden"
+      >
         <div className="absolute inset-0 opacity-20">
           <img
             src="https://readdy.ai/api/search-image?query=Modern%20corporate%20headquarters%20building%20exterior%20with%20glass%20facade%20and%20steel%20architecture%2C%20professional%20business%20office%20complex%20with%20contemporary%20design%20and%20blue%20accent%20lighting%2C%20sleek%20urban%20corporate%20environment%20representing%20trust%20and%20stability%2C%20clean%20architectural%20lines%20with%20emphasis%20on%20innovation%20and%20reliability%2C%20dynamic%20composition%20suggesting%20corporate%20success%20and%20growth%2C%20sophisticated%20business%20atmosphere%20with%20focus%20on%20professional%20excellence&width=1920&height=800&seq=corporate-headquarters&orientation=landscape"
@@ -665,7 +825,9 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-blue-900 mb-4">会社概要</h2>
+              <h2 className="text-4xl font-bold text-blue-900 mb-4">
+                会社概要
+              </h2>
               <div className="w-16 h-1 bg-cyan-500 mx-auto"></div>
             </div>
 
@@ -673,31 +835,51 @@ export default function Home() {
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-bold text-blue-900 mb-2">社名</h3>
-                    <p className="text-gray-700">株式会社ITソリューション・ラボ</p>
+                    <h3 className="text-lg font-bold text-blue-900 mb-2">
+                      社名
+                    </h3>
+                    <p className="text-gray-700">
+                      株式会社ITソリューション・ラボ
+                    </p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-blue-900 mb-2">所在地</h3>
-                    <p className="text-gray-700">神奈川県川崎市高津区久地3-2-21</p>
+                    <h3 className="text-lg font-bold text-blue-900 mb-2">
+                      所在地
+                    </h3>
+                    <p className="text-gray-700">
+                      神奈川県川崎市高津区久地3-2-21
+                    </p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-blue-900 mb-2">代表</h3>
+                    <h3 className="text-lg font-bold text-blue-900 mb-2">
+                      代表
+                    </h3>
                     <p className="text-gray-700">松澤順一</p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-blue-900 mb-2">設立</h3>
+                    <h3 className="text-lg font-bold text-blue-900 mb-2">
+                      設立
+                    </h3>
                     <p className="text-gray-700">2025年1月</p>
                   </div>
                 </div>
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-bold text-blue-900 mb-2">事業内容</h3>
-                    <p className="text-gray-700">ITコンサル、ソフトウェア開発・保守、クラウド・EC運営など</p>
+                    <h3 className="text-lg font-bold text-blue-900 mb-2">
+                      事業内容
+                    </h3>
+                    <p className="text-gray-700">
+                      ITコンサル、ソフトウェア開発・保守、クラウド・EC運営など
+                    </p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-blue-900 mb-2">理念</h3>
-                    <p className="text-gray-700">新技術・アイデアを研究し、実用的な解決策を提供。</p>
+                    <h3 className="text-lg font-bold text-blue-900 mb-2">
+                      理念
+                    </h3>
+                    <p className="text-gray-700">
+                      新技術・アイデアを研究し、実用的な解決策を提供。
+                    </p>
                   </div>
                 </div>
               </div>
@@ -707,7 +889,10 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-to-br from-blue-900 to-blue-800 relative overflow-hidden">
+      <section
+        id="contact"
+        className="py-20 bg-gradient-to-br from-blue-900 to-blue-800 relative overflow-hidden"
+      >
         <div className="absolute inset-0 opacity-20">
           <img
             src="https://readdy.ai/api/search-image?query=Professional%20business%20contact%20and%20communication%20concept%20with%20modern%20office%20environment%2C%20corporate%20executives%20engaging%20in%20business%20consultation%20and%20client%20meetings%2C%20contemporary%20workspace%20with%20blue%20accent%20lighting%20and%20glass%20surfaces%2C%20atmosphere%20of%20accessibility%20and%20professional%20service%2C%20focus%20on%20business%20communication%20and%20customer%20support%2C%20dynamic%20composition%20suggesting%20connectivity%20and%20business%20relationships%2C%20clean%20minimalist%20design%20with%20emphasis%20on%20client%20engagement&width=1920&height=800&seq=business-contact-bg&orientation=landscape"
@@ -718,16 +903,26 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white mb-4">お問い合わせ</h2>
+              <h2 className="text-4xl font-bold text-white mb-4">
+                お問い合わせ
+              </h2>
               <div className="w-16 h-1 bg-cyan-400 mx-auto mb-6"></div>
-              <p className="text-lg text-cyan-100 font-medium">独立支援も受付中（詳細はお問い合わせください）</p>
+              <p className="text-lg text-cyan-100 font-medium">
+                独立支援も受付中（詳細はお問い合わせください）
+              </p>
             </div>
 
             <div className="bg-white/95 backdrop-blur-sm rounded-xl p-8 shadow-xl">
-              <form id="contact-form" onSubmit={handleSubmit} className="space-y-6">
+              <form
+                id="contact-form"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-blue-900 mb-2">お名前 *</label>
+                    <label className="block text-sm font-medium text-blue-900 mb-2">
+                      お名前 *
+                    </label>
                     <input
                       type="text"
                       name="name"
@@ -738,7 +933,9 @@ export default function Home() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-blue-900 mb-2">会社名・団体名</label>
+                    <label className="block text-sm font-medium text-blue-900 mb-2">
+                      会社名・団体名
+                    </label>
                     <input
                       type="text"
                       name="company"
@@ -751,7 +948,9 @@ export default function Home() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-blue-900 mb-2">メールアドレス *</label>
+                    <label className="block text-sm font-medium text-blue-900 mb-2">
+                      メールアドレス *
+                    </label>
                     <input
                       type="email"
                       name="email"
@@ -762,7 +961,9 @@ export default function Home() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-blue-900 mb-2">電話番号</label>
+                    <label className="block text-sm font-medium text-blue-900 mb-2">
+                      電話番号
+                    </label>
                     <input
                       type="tel"
                       name="phone"
@@ -774,7 +975,9 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-blue-900 mb-2">お問い合わせ種別 *</label>
+                  <label className="block text-sm font-medium text-blue-900 mb-2">
+                    お問い合わせ種別 *
+                  </label>
                   <select
                     name="type"
                     required
@@ -791,7 +994,9 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-blue-900 mb-2">お問い合わせ内容 * (500文字以内)</label>
+                  <label className="block text-sm font-medium text-blue-900 mb-2">
+                    お問い合わせ内容 * (500文字以内)
+                  </label>
                   <textarea
                     name="content"
                     required
@@ -802,7 +1007,9 @@ export default function Home() {
                     className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm resize-none"
                     placeholder="お問い合わせ内容をご記入ください"
                   ></textarea>
-                  <p className="text-sm text-gray-500 mt-1">{formData.content.length}/500文字</p>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {formData.content.length}/500文字
+                  </p>
                 </div>
 
                 <div className="text-center">
@@ -823,12 +1030,24 @@ export default function Home() {
       <footer className="bg-blue-900 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-xl font-bold mb-2">株式会社ITソリューション・ラボ</h3>
+            <h3 className="text-xl font-bold mb-2">
+              株式会社ITソリューション・ラボ
+            </h3>
             <p className="text-cyan-200 mb-6">神奈川県川崎市高津区久地3-2-21</p>
 
             <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-8">
-              <Link href="#" className="text-cyan-200 hover:text-white transition-colors cursor-pointer">プライバシーポリシー</Link>
-              <Link href="#" className="text-cyan-200 hover:text-white transition-colors cursor-pointer">サイトマップ</Link>
+              <Link
+                href="#"
+                className="text-cyan-200 hover:text-white transition-colors cursor-pointer"
+              >
+                プライバシーポリシー
+              </Link>
+              <Link
+                href="#"
+                className="text-cyan-200 hover:text-white transition-colors cursor-pointer"
+              >
+                サイトマップ
+              </Link>
             </div>
           </div>
         </div>
